@@ -118,11 +118,23 @@ minetest.register_tool("spyglass:spyglass", {
 
 -- Crafting
 
+local glass = "default:glass"
+local copper = "default:copper_ingot"
+
+if minetest.get_modpath("hades_core") then
+	glass = "hades_core:glass"
+	copper = "hades_core:copper_ingot"
+elseif minetest.get_modpath("fl_ores") then
+	glass = "fl_glass:framed_glass"
+	copper = "fl_ores:copper_ingot"
+end
+
 minetest.register_craft({
 	output = "spyglass:spyglass",
 	recipe = {
-		{"", "default:glass", ""},
-		{"", "default:copper_ingot", ""},
-		{"", "default:copper_ingot", ""},
+		{glass},
+		{copper},
+		{copper},
 	}
 })
+
