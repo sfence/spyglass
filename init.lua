@@ -30,10 +30,10 @@ local function show_overlay(name, item_name)
 		scale = {x = 65, y = 65},
 		alignment = {x = 1, y = 1},
 	})
-	player:set_fov(10)
+	player:set_fov(10, false, 0.2)
 	player:hud_set_flags({ wielditem = false })
 	-- play the sound effect
-	minetest.sound_play("spyglass_zoom", {pos = pos}, true)
+	minetest.sound_play("spyglass_zoom", {to_player = name, gain = 0.9} )
 end
 
 local function hide_overlay(name)
@@ -48,7 +48,7 @@ local function hide_overlay(name)
 	player:set_fov(0)
 	player:hud_set_flags({ wielditem = true })
 	-- play the sound effect
-	minetest.sound_play("spyglass_zoom_out", {pos = pos}, true)
+	minetest.sound_play("spyglass_zoom_out", {to_player = name, gain = 0.8} )
 end
 
 -- Be absolutely certain crosshair HUD gets removed on death
